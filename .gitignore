@@ -1,10 +1,30 @@
+# Secrets
 .env
 .env.*
+
+# Logs & Runtime Data
 logs/
 data/
-__pycache__/
-*.py[cod]
+*.log
 *.db
 *.sqlite
+*.pid
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
 .venv/
 venv/
+ENV/
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
