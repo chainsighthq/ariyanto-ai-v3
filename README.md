@@ -1,53 +1,57 @@
-# ARIYANTO AI v3
+# 🤖 ARIYANTO AI v3
 
-Hierarchical Multi-Agent Trading System
+**Production-Grade Hierarchical Multi-Agent Trading System**
 
-## Features
-- 9 Specialist Agents (Futures, Risk, ICT, DEX, dll)
-- Smart Keyword Routing
-- Production Ready (systemd + Telegram)
-
-## Usage
-```bash
-PYTHONPATH=src python run.py "Long BTC 10x"
-PYTHONPATH=src python run.py "Check portfolio risk"
-sudo systemctl status ariyanto-ai
-sudo systemctl restart ariyanto-ai
-Agents
-FuturesSpecialist (long, short, btc)
-RiskManager (risk, drawdown)
-ICTSMCAgent (ict, smc)
-IntelligenceResearchAgent (analyze, news)
-DEXSpecialist (dex, arbitrage)
-TradingViewMCPAgent (tradingview, chart)
-MoonshotSolanaAgent (moonshot, solana)
-WalletManager (wallet, balance)
-GeneralAnalysisAgent (fallback)
-Built by @ariiyaantoo
+- **52+ Specialist Agents** (Futures, Risk, ICT/SMC, DEX, RWA, dll)
+- **Smart Keyword Routing** — Otomatis pilih agent terbaik
+- **Hybrid Memory** — Redis (fast) + SQLite (persistent + audit)
+- **Production Ready** — Systemd, monitoring, backup, Telegram alerts
+- **Safe by Default** — Simulation mode + live mode dengan proteksi
 
 ---
 
-## ⚠️ LIVE TRADING MODE
-
-**DEFAULT: SIMULATION MODE** (safe, no real money)
-
-To enable live trading:
+## 🚀 Quick Start
 
 ```bash
-# 1. Edit .env
-EXECUTION_MODE=live
-MAX_POSITION_SIZE_USD=500
-REQUIRE_CONFIRMATION=true
+# 1. Install dependencies
+pip install -r requirements.txt
 
-# 2. Start with confirmation
-EXECUTION_MODE=live python run.py "Long BTC 10x"
-Safety Features:
+# 2. Test via CLI
+PYTHONPATH=src python run.py "Long BTC 10x"
+PYTHONPATH=src python run.py "Check portfolio risk"
+PYTHONPATH=src python run.py "Find SOL arbitrage"
+
+# 3. Run Dashboard
+python dashboard.py
+# Buka http://localhost:8080
+
+# 4. Run Telegram Bot
+python telegram_bot.py
+
+# 5. Run Production (systemd)
+sudo systemctl start ariyanto-ai
+sudo systemctl start ariyanto-telegram-bot
+📁 Project Structure
+ariyanto-ai-v3/
+├── src/ariyanto_ai_v3/
+│   ├── agents/           # 50+ specialist agents
+│   ├── core/             # Router, Models, Supervisor
+│   ├── memory/           # Redis + SQLite hybrid
+│   └── utils/            # Telegram, Rate Limiter, Metrics
+├── dashboard.py          # Web monitoring
+├── telegram_bot.py       # Telegram interface
+├── backtest.py           # Simple backtesting engine
+├── run_production.py     # Production runner
+└── tests/                # 13 unit tests (100% pass)
+🔒 Security Features
+Simulation mode by default
 Max position size limit
-Explicit confirmation required
-All actions logged to audit trail
-Telegram alerts for all live actions
-Automatic fallback to simulation on errors
-Never run live mode without:
-Understanding the risks
-Testing thoroughly in simulation
-Setting appropriate position limits
+Rate limiting (Telegram)
+Full audit logging
+.env protected via .gitignore
+📊 Monitoring
+Dashboard: http://localhost:8080
+Prometheus: http://localhost:8000/metrics
+Grafana: http://localhost:3000
+Logs: logs/ + journalctl -u ariyanto-ai
+Built with ❤️ by @ariiyaantoo
