@@ -1,0 +1,15 @@
+[
+  {
+    "task": "Long BTC 10x",
+    "agent": "FuturesSpecialist",
+    "entry": 79834,
+    "sl": 78237,
+    "tp": 81829
+  },
+  {
+    "task": "Check portfolio risk",
+    "agent": "RiskManager",
+    "drawdown": 4.76,
+    "status": "BREACH"
+  }
+]
